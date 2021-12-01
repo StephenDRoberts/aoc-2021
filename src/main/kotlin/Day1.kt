@@ -1,16 +1,14 @@
 import org.springframework.stereotype.Component
-import utils.Utils
+import utils.Utils.readFileLineByLineUsingForEachLine
 
 @Component
-class Day1(
-    private val utils: Utils
-) {
+class Day1() {
     val prefix = "/Users/Stephen.Roberts2/Documents/001_Code/aoc2021/src/main/inputs/"
 
     fun findSolution1(inputPuzzle: String): Int {
         val filepath = "${prefix}${inputPuzzle}"
 
-        val inputArray = utils.readFileLineByLineUsingForEachLine(filepath)
+        val inputArray = readFileLineByLineUsingForEachLine(filepath)
 
         var count: Int = 0;
         inputArray.mapIndexed { index, _ ->
@@ -23,7 +21,7 @@ class Day1(
     fun findSolution2(inputPuzzle: String): Int {
         val filepath = "${prefix}${inputPuzzle}"
 
-        val inputArray = utils.readFileLineByLineUsingForEachLine(filepath)
+        val inputArray = readFileLineByLineUsingForEachLine(filepath)
 
         var count: Int = 0;
         inputArray.mapIndexed { index, _ ->

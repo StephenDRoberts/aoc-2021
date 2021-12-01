@@ -1,10 +1,8 @@
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import utils.Utils
 
 class Day1Test() {
-    private val utils = Utils()
-    private val puzzle = Day1(utils)
+    private val puzzle = Day1()
 
     @Test
     fun `should return 7 for test input 1 puzzle`(){

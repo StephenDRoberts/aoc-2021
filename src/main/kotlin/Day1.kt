@@ -1,5 +1,5 @@
 import org.springframework.stereotype.Component
-import utils.Utils.readFileLineByLineUsingForEachLine
+import utils.Utils.readFileLinesAsInts
 
 @Component
 class Day1() {
@@ -8,7 +8,7 @@ class Day1() {
     fun findSolution1(inputPuzzle: String): Int {
         val filepath = "${prefix}${inputPuzzle}"
 
-        val inputArray = readFileLineByLineUsingForEachLine(filepath)
+        val inputArray = readFileLinesAsInts(filepath)
 
         var count: Int = 0;
         inputArray.mapIndexed { index, _ ->
@@ -21,7 +21,7 @@ class Day1() {
     fun findSolution2(inputPuzzle: String): Int {
         val filepath = "${prefix}${inputPuzzle}"
 
-        val inputArray = readFileLineByLineUsingForEachLine(filepath)
+        val inputArray = readFileLinesAsInts(filepath)
 
         var count: Int = 0;
         inputArray.mapIndexed { index, _ ->

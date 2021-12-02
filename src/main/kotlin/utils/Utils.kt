@@ -6,9 +6,24 @@ import java.io.File
 @Component
 object Utils {
 
-    fun readFileLineByLineUsingForEachLine(fileName: String): List<Int> {
+    fun readFileLinesAsInts(fileName: String): List<Int> {
         val list = mutableListOf<Int>()
-        File(fileName).forEachLine { it -> list.add(it.toInt()) }
+        File(fileName).forEachLine { list.add(it.toInt()) }
+        return list
+    }
+
+    fun readFileLinesAsStrings(fileName: String): List<String> {
+        val list = mutableListOf<String>()
+        File(fileName).forEachLine { list.add(it) }
+       return list
+    }
+
+    fun readFileLinesAsPairsOfStrings(fileName: String, delimiter: String): List<Pair<String, String>> {
+        val list = mutableListOf<Pair<String, String>>()
+        File(fileName).forEachLine { it ->
+            val splitLine = it.split(delimiter)
+            list.add(Pair(splitLine[0], splitLine[1]))
+        }
         return list
     }
 }

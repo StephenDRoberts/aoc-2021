@@ -27,8 +27,8 @@ class Day3 {
                 array.add(it[i].toInt())
             }
 
-            val zeros = array.count { it === 0 }
-            val ones = array.count { it === 1 }
+            val zeros = array.count { it == 0 }
+            val ones = array.count { it == 1 }
 
             if(zeros > ones) {
                 gammaBinary.add(0)
@@ -81,9 +81,9 @@ class Day3 {
                 array.add(it[index].toInt())
             }
 
-            val zeros = array.count { it === 0 }
-            val ones = array.count { it === 1 }
-            var valueToFilter = 0
+            val zeros = array.count { it == 0 }
+            val ones = array.count { it == 1 }
+            var valueToFilter: Int
             if(zeros > ones) {
                 valueToFilter = 0
             } else {

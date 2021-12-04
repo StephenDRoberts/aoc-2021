@@ -15,15 +15,15 @@ class Day4 {
         var winningCard = listOf<List<Int>>()
 
         for(i in 2..allData.size step 6) {
-            val unformattedGameCard1 = allData.slice(IntRange(i, i+4))
-            val formattedGameCard1 = formatGameCard(unformattedGameCard1)
-            val minIndexForGameCard1Rows = minIndexOfGameCard(formattedGameCard1, formattedInputsBalls)
-            val transposedGameCard1 = transposeRowsToColumns(formattedGameCard1)
-            val minIndexForGameCard1Columns = minIndexOfGameCard(transposedGameCard1, formattedInputsBalls)
-            val minIndex = minOf(minIndexForGameCard1Rows, minIndexForGameCard1Columns)
+            val unformattedGameCard = allData.slice(IntRange(i, i+4))
+            val formattedGameCard = formatGameCard(unformattedGameCard)
+            val minIndexForGameCardRows = minIndexOfGameCard(formattedGameCard, formattedInputsBalls)
+            val transposedGameCard = transposeRowsToColumns(formattedGameCard)
+            val minIndexForGameCardColumns = minIndexOfGameCard(transposedGameCard, formattedInputsBalls)
+            val minIndex = minOf(minIndexForGameCardRows, minIndexForGameCardColumns)
             if(minIndex < winningIndex) {
                 winningIndex = minIndex
-                winningCard = formattedGameCard1
+                winningCard = formattedGameCard
             }
         }
 
@@ -46,15 +46,15 @@ class Day4 {
         var losingCard = listOf<List<Int>>()
 
         for(i in 2..allData.size step 6) {
-            val unformattedGameCard1 = allData.slice(IntRange(i, i+4))
-            val formattedGameCard1 = formatGameCard(unformattedGameCard1)
-            val minIndexForGameCard1Rows = minIndexOfGameCard(formattedGameCard1, formattedInputsBalls)
-            val transposedGameCard1 = transposeRowsToColumns(formattedGameCard1)
-            val minIndexForGameCard1Columns = minIndexOfGameCard(transposedGameCard1, formattedInputsBalls)
-            val minIndex = minOf(minIndexForGameCard1Rows, minIndexForGameCard1Columns)
+            val unformattedGameCard = allData.slice(IntRange(i, i+4))
+            val formattedGameCard = formatGameCard(unformattedGameCard)
+            val minIndexForGameCardRows = minIndexOfGameCard(formattedGameCard, formattedInputsBalls)
+            val transposedGameCard = transposeRowsToColumns(formattedGameCard)
+            val minIndexForGameCardColumns = minIndexOfGameCard(transposedGameCard, formattedInputsBalls)
+            val minIndex = minOf(minIndexForGameCardRows, minIndexForGameCardColumns)
             if(minIndex > losingIndex) {
                 losingIndex = minIndex
-                losingCard = formattedGameCard1
+                losingCard = formattedGameCard
             }
         }
 

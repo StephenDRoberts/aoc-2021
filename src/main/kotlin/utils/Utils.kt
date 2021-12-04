@@ -18,6 +18,12 @@ object Utils {
        return list
     }
 
+    fun readFileLinesAsStringsWithDelimiter(fileName: String, delimiter: String): List<List<String>> {
+        val list = mutableListOf<List<String>>()
+        File(fileName).forEachLine { list.add(it.split(delimiter)) }
+        return list
+    }
+
     fun readFileLinesAsPairsOfStrings(fileName: String, delimiter: String): List<Pair<String, String>> {
         val list = mutableListOf<Pair<String, String>>()
         File(fileName).forEachLine { it ->
@@ -26,4 +32,6 @@ object Utils {
         }
         return list
     }
+
+
 }

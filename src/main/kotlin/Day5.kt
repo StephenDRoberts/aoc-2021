@@ -33,22 +33,21 @@ class Day5 {
 
     fun filterIfDiagonal(list: List<StartAndEnd>): List<StartAndEnd> =
         list.filter { startAndEnd ->
-            startAndEnd.first.first  == startAndEnd.second.first ||
-            startAndEnd.first.second  == startAndEnd.second.second
+            startAndEnd.first.first == startAndEnd.second.first ||
+                    startAndEnd.first.second == startAndEnd.second.second
         }
 
 
     fun filterForDiagonal(list: List<StartAndEnd>): List<StartAndEnd> =
         list.filterNot { startAndEnd ->
-            startAndEnd.first.first  == startAndEnd.second.first ||
-                    startAndEnd.first.second  == startAndEnd.second.second
+            startAndEnd.first.first == startAndEnd.second.first ||
+                    startAndEnd.first.second == startAndEnd.second.second
         }
 
-    fun convertLinesToStartAndEndCoords(list: List<String>): List<StartAndEnd>
-        = list.map { convertLineToStartAndEndCoords(it) }
+    fun convertLinesToStartAndEndCoords(list: List<String>): List<StartAndEnd> = list.map { convertLineToStartAndEndCoords(it) }
 
 
-    fun convertLineToStartAndEndCoords(line: String): StartAndEnd{
+    fun convertLineToStartAndEndCoords(line: String): StartAndEnd {
         val stringCoords = line.split(" -> ").filterNot { it == " -> " }
         val start = stringCoords.first().split(",")
         val startCoords = Coords(start[0].toInt(), start[1].toInt())
@@ -63,8 +62,8 @@ class Day5 {
         val start = startAndEnd.first
         val end = startAndEnd.second
 
-        for(x in minOf(start.first, end.first)..maxOf(start.first, end.first)) {
-            for(y in minOf(start.second, end.second)..maxOf(start.second, end.second)) {
+        for (x in minOf(start.first, end.first)..maxOf(start.first, end.first)) {
+            for (y in minOf(start.second, end.second)..maxOf(start.second, end.second)) {
                 fullPathList.add(Coords(x, y))
             }
         }
@@ -79,8 +78,7 @@ class Day5 {
         val xDistance = end.first - start.first
         val yDistance = end.second - start.second
 
-        for (i in 0..abs(xDistance)){
-
+        for (i in 0..abs(xDistance)) {
             fullPathList.add(
                 Pair(
                     start.first + i * (xDistance.div(abs(xDistance).coerceAtLeast(1))),

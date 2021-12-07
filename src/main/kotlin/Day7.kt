@@ -13,7 +13,7 @@ class Day7 {
 
         var medianLocation = ceil(inputs.size / 2.0 - 1).toInt()
         val median = inputs[medianLocation]
-        println(median)
+
         val answerArray = inputs.map {
             abs(it.minus(median))
         }

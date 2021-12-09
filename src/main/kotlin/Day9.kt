@@ -38,11 +38,10 @@ class Day9 {
     fun checkAdjacents(inputs: List<List<String>>, startingPoints: List<Pair<Int, Int>>, checkedPairs: MutableList<Pair<Int, Int>>): List<Pair<Int, Int>> {
         if (startingPoints.isEmpty()) return checkedPairs else {
 
-            val newAdjacents = startingPoints.map { startingPoint ->
+            val newAdjacents = startingPoints.flatMap { startingPoint ->
                 val availableAdjacents = mutableListOf<Pair<Int, Int>>()
                 val row = startingPoint.first
                 val column = startingPoint.second
-                val number = inputs[row][column].toInt()
 
                     val above =
                         if (row == 0) mapOf(Pair(10, 10) to 10) else mapOf(Pair(maxOf(row - 1, 0), column) to inputs[maxOf(row - 1, 0)][column].toInt())
@@ -60,12 +59,9 @@ class Day9 {
                 checkedPairs.add(startingPoint)
                 availableAdjacents
             }
+             val uncheckedAdjacents = newAdjacents.filterNot { newAdjs -> checkedPairs.any { it == newAdjs } }.distinct()
 
-                val uncheckedAdjacents = newAdjacents.flatten().filterNot { newAdjs -> checkedPairs.any { it == newAdjs } }.distinct()
-//                val checked = newAdjacents.flatten().filter { newAdjs -> checkedPairs.any { it == newAdjs } }.toMutableList()
-//                checkedPairs.map { it -> checked.add(it) }
-
-                return checkAdjacents(inputs, uncheckedAdjacents, checkedPairs.distinct().toMutableList())
+            return checkAdjacents(inputs, uncheckedAdjacents, checkedPairs.distinct().toMutableList())
         }
 
     }
@@ -89,10 +85,7 @@ class Day9 {
 
                 val testList = listOf(above, left, right, down)
 
-                if ((number < testList.minOrNull()!!) && (testList.count {it == number } == 0)) {
-//                    println("row, $row")
-//                    println("number $number")
-//                    println("$above, $left, $right, $down")
+                if ((number < testList.minOrNull()!!) && (testList.count { it == number } == 0)) {
                     lowestPoints.add(number)
 
                     lowestPointsMap[Pair(row, element)] = number

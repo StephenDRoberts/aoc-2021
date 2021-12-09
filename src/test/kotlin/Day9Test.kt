@@ -32,10 +32,10 @@ internal class Day9Test {
         }
 
         @Test
-        fun `should return 1134 for part 2 main input`(){
+        fun `should return 1235430 for part 2 main input`(){
             val actual = day9.findSolution2("inputs9.txt")
 
-            assertThat(actual).isEqualTo(1134)
+            assertThat(actual).isEqualTo(1235430)
         }
     }
 }
